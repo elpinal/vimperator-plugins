@@ -1,3 +1,10 @@
 #!/bin/bash
 
-ln *.js $HOME/.vimperator/plugin/
+PLUGIN_DIR=$HOME/.vimperator/plugin/
+
+if [[ ! -d $PLUGIN_DIR ]]; then
+  echo "creating $PLUGIN_DIR"
+  mkdir -p $PLUGIN_DIR
+fi
+
+ln *.js $PLUGIN_DIR
