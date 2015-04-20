@@ -7,4 +7,5 @@ if [[ ! -d $PLUGIN_DIR ]]; then
   mkdir -p $PLUGIN_DIR
 fi
 
+echo "making sym-link into $PLUGIN_DIR"
 ln -s $(pwd)/*.js $PLUGIN_DIR/
