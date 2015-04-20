@@ -7,4 +7,4 @@ if [[ ! -d $PLUGIN_DIR ]]; then
   mkdir -p $PLUGIN_DIR
 fi
 
-ln *.js $PLUGIN_DIR/
+ln -s $(pwd)/*.js $PLUGIN_DIR/
