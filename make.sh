@@ -8,4 +8,4 @@ if [[ ! -d $PLUGIN_DIR ]]; then
 fi
 
 echo "making sym-link into $PLUGIN_DIR"
-ln -s $(pwd)/*.js $PLUGIN_DIR
+ln -fs $(pwd)/*.js $PLUGIN_DIR
