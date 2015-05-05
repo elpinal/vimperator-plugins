@@ -44,7 +44,7 @@ liberator.plugins.exLeadMarks = (function(){
 			} else {
 				liberator.echoerr("Error!:not set");
 			}
-		},{
+		}, {
 			completer: function(context) liberator.plugins.exLeadMarks.list(context),
 				argCount: "?",
 				bang: true,
@@ -82,7 +82,7 @@ liberator.plugins.exLeadMarks = (function(){
 			} else {
 				liberator.echoerr("Error!:not set");
 			}
-		},{
+		}, {
 			completer: function(context) liberator.plugins.exLeadMarks.list(context),
 				argCount: "?",
 				bang: true,
@@ -114,9 +114,9 @@ liberator.plugins.exLeadMarks = (function(){
 			var filter;
 			filter = context.filter.toLowerCase();
 			filter = filter.split(" ");
-			function ZeroFormat(num, n){
-				var ret=""+num;
-				while(ret.length < n){
+			function ZeroFormat(num, n) {
+				var ret = "" + num;
+				while(ret.length < n) {
 					ret = "0" + ret;
 				}
 				return (ret);
@@ -133,7 +133,7 @@ liberator.plugins.exLeadMarks = (function(){
 				if(filter.length < 2){
 					if((title.toLowerCase().indexOf(filter[0]) != -1) || (url.toLowerCase().indexOf(filter[0]) != -1))
 						links.push([title, url]);
-				}else{
+				} else {
 					var kh = "match"
 					for(kk = 0; kk < filter.length; kk++){
 						if((title.toLowerCase().indexOf(filter[kk]) == -1) && (url.toLowerCase().indexOf(filter[kk]) == -1))
