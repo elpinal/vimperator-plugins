@@ -1,9 +1,9 @@
 /*
- * @name            linkpad.js
- * @description     like LinkPad of Netscape.
+ * @name	    linkpad.js
+ * @description	    like LinkPad of Netscape.
  * @description-ja  ネットスケープのLinkPadのようなもの。
- * @author          wocota <wocota@gmail.com> --> lukana
- * @version         1.0.0
+ * @author	    wocota <wocota@gmail.com> --> lukana
+ * @version	    1.0.0
  *
  * LICENSE
  *   Public Domain http://creativecommons.org/licenses/publicdomain/
@@ -22,8 +22,8 @@ liberator.plugins.exLinkPad = (function(){
 	links = [];
 	//view links list and open link
 	commands.addUserCommand(['linkpad'],' linkpad ',
-                function (args){
-                        if(args != ""){
+		function (args){
+			if(args != ""){
 				var a, b, y;
 				let arg = args.literalArg;
 				let num = arg.match(/^\d+/);
@@ -41,27 +41,27 @@ liberator.plugins.exLinkPad = (function(){
 					return;
 				}
 				liberator.plugins.exLinkPad.open(links[b][1], liberator.NEW_TAB);
-                        } else {
+			} else {
 				liberator.echoerr("Error!:not set");
-                        }
-                },{
-                        completer: function(context) liberator.plugins.exLinkPad.list(context),
+			}
+		},{
+			completer: function(context) liberator.plugins.exLinkPad.list(context),
 				argCount: "?",
 				bang: true,
 				count: true,
 				literal: 0
-                }
+		}
 	);
 	// add link of current tab
 	commands.addUserCommand(['addlinkpad'],' addlinkpad ',
-                function (){
-                        liberator.plugins.exLinkPad.add(buffer.URL, buffer.title);
-                }
+		function (){
+			liberator.plugins.exLinkPad.add(buffer.URL, buffer.title);
+		}
 	);
 	// delete link
 	commands.addUserCommand(['dellinkpad'],' dellinkpad ',
-                function (args){
-                        if(args != ""){
+		function (args){
+			if(args != ""){
 				var a, b, y;
 				let arg = args.literalArg;
 				let num = arg.match(/^\d+/);
@@ -79,16 +79,16 @@ liberator.plugins.exLinkPad = (function(){
 					return;
 				}
 				liberator.plugins.exLinkPad.del(links[b][1]);
-                        } else {
+			} else {
 				liberator.echoerr("Error!:not set");
-                        }
-                },{
-                        completer: function(context) liberator.plugins.exLinkPad.list(context),
+			}
+		},{
+			completer: function(context) liberator.plugins.exLinkPad.list(context),
 				argCount: "?",
 				bang: true,
 				count: true,
 				literal: 0
-                }
+		}
 	);
 
 	return {
@@ -99,8 +99,8 @@ liberator.plugins.exLinkPad = (function(){
 		},
 		del: function del(url)
 		{
-    			linkpad.remove(url);
-    			liberator.echomsg("Deleted Link Pad : " + url);
+			linkpad.remove(url);
+			liberator.echomsg("Deleted Link Pad : " + url);
 		},
 		open: function open(url, where)
 		{
@@ -140,7 +140,7 @@ liberator.plugins.exLinkPad = (function(){
 						if((title.toLowerCase().indexOf(filter[kk]) == -1) && (url.toLowerCase().indexOf(filter[kk]) == -1))
 							var kh = "notmatch";
 					}
-					if (kh  != "notmatch")
+					if (kh	!= "notmatch")
 						links.push([title, url]);
 				}
 			}

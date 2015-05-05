@@ -1,9 +1,9 @@
 /*
- * @name            leadmarks.js
- * @description     [like LinkPad of Netscape] --> bookmark sorted by add date.
+ * @name	    leadmarks.js
+ * @description	    [like LinkPad of Netscape] --> bookmark sorted by add date.
  * @description-ja  [ネットスケープのLinkPadのようなもの]からフォークした,追加した順に並ぶbookmark.
- * @author          wocota <wocota@gmail.com> --> lukana
- * @version         1.0.0
+ * @author	    wocota <wocota@gmail.com> --> lukana
+ * @version	    1.0.0
  *
  * LICENSE
  *   Public Domain http://creativecommons.org/licenses/publicdomain/
@@ -22,8 +22,8 @@ liberator.plugins.exLeadMarks = (function(){
 	links = [];
 	//view links list and open link
 	commands.addUserCommand(['leadmarks'],' leadmarks ',
-                function (args){
-                        if(args != ""){
+		function (args){
+			if(args != ""){
 				var a, b, y;
 				let arg = args.literalArg;
 				let num = arg.match(/^\d+/);
@@ -41,27 +41,27 @@ liberator.plugins.exLeadMarks = (function(){
 					return;
 				}
 				liberator.plugins.exLeadMarks.open(links[b][1], liberator.NEW_TAB);
-                        } else {
+			} else {
 				liberator.echoerr("Error!:not set");
-                        }
-                },{
-                        completer: function(context) liberator.plugins.exLeadMarks.list(context),
+			}
+		},{
+			completer: function(context) liberator.plugins.exLeadMarks.list(context),
 				argCount: "?",
 				bang: true,
 				count: true,
 				literal: 0
-                }
+		}
 	);
 	// add link of current tab
 	commands.addUserCommand(['addleadmark'],' addleadmark ',
-                function (){
-                        liberator.plugins.exLeadMarks.add(buffer.URL, buffer.title);
-                }
+		function (){
+			liberator.plugins.exLeadMarks.add(buffer.URL, buffer.title);
+		}
 	);
 	// delete link
 	commands.addUserCommand(['delleadmark'],' delleadmark ',
-                function (args){
-                        if(args != ""){
+		function (args){
+			if(args != ""){
 				var a, b, y;
 				let arg = args.literalArg;
 				let num = arg.match(/^\d+/);
@@ -79,16 +79,16 @@ liberator.plugins.exLeadMarks = (function(){
 					return;
 				}
 				liberator.plugins.exLeadMarks.del(links[b][1]);
-                        } else {
+			} else {
 				liberator.echoerr("Error!:not set");
-                        }
-                },{
-                        completer: function(context) liberator.plugins.exLeadMarks.list(context),
+			}
+		},{
+			completer: function(context) liberator.plugins.exLeadMarks.list(context),
 				argCount: "?",
 				bang: true,
 				count: true,
 				literal: 0
-                }
+		}
 	);
 
 	return {
@@ -99,8 +99,8 @@ liberator.plugins.exLeadMarks = (function(){
 		},
 		del: function del(url)
 		{
-    			leadmarks.remove(url);
-    			liberator.echomsg("Deleted Lead Mark : " + url);
+			leadmarks.remove(url);
+			liberator.echomsg("Deleted Lead Mark : " + url);
 		},
 		open: function open(url, where)
 		{
@@ -139,7 +139,7 @@ liberator.plugins.exLeadMarks = (function(){
 						if((title.toLowerCase().indexOf(filter[kk]) == -1) && (url.toLowerCase().indexOf(filter[kk]) == -1))
 							var kh = "notmatch";
 					}
-					if (kh  != "notmatch")
+					if (kh	!= "notmatch")
 						links.push([title, url]);
 				}
 			}
