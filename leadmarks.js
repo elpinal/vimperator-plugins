@@ -68,6 +68,9 @@ liberator.plugins.exLeadMarks = (function(){
 	commands.addUserCommand(['addleadmark'],' addleadmark ',
 		function (){
 			liberator.plugins.exLeadMarks.add(buffer.URL, buffer.title);
+			if (!bookmarks.add(false, buffer.title, buffer.URL, null, [], "", false)) {
+				liberator.echoerr("Could not add bookmark: " + buffer.title)
+			}
 		}
 	);
 	// delete link
