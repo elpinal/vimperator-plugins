@@ -16,6 +16,18 @@
  * 
  */
 
+liberator.plugins.exMath = (function() {
+	return {
+		formatWithZero: function formatWithZero(num, n) {
+			var ret = String(num);
+			while(ret.length < n) {
+				ret = "0" + ret;
+			}
+			return (ret);
+		}
+	};
+})();
+
 liberator.plugins.exLeadMarks = (function(){
 	var leadmarks = storage.newMap("leadmarks", { store: true, privateData: true });
 	var links = [];
@@ -114,13 +126,6 @@ liberator.plugins.exLeadMarks = (function(){
 			var filter;
 			filter = context.filter.toLowerCase();
 			filter = filter.split(" ");
-			function ZeroFormat(num, n) {
-				var ret = "" + num;
-				while(ret.length < n) {
-					ret = "0" + ret;
-				}
-				return (ret);
-			}
 			context.title = ["Lead Mark", "URL"];
 			let i = 1;
 			links = [];
@@ -129,7 +134,7 @@ liberator.plugins.exLeadMarks = (function(){
 			}
 			for(let [url,] in leadmarks){
 				i = i - 1;
-				let title = ZeroFormat(i,3) + ':' + leadmarks.get(url);
+				let title = liberator.plugins.exMath.formatWithZero(i, 3) + ':' + leadmarks.get(url);
 				if(filter.length < 2){
 					if((title.toLowerCase().indexOf(filter[0]) != -1) || (url.toLowerCase().indexOf(filter[0]) != -1))
 						links.push([title, url]);

@@ -115,13 +115,6 @@ liberator.plugins.exLinkPad = (function(){
 			var filter;
 			filter = context.filter.toLowerCase();
 			filter = filter.split(" ");
-			function ZeroFormat(num, n) {
-				var ret = "" + num;
-				while(ret.length < n) {
-					ret = "0" + ret;
-				}
-				return (ret);
-			}
 			context.title = ["Link Pad", "URL"];
 			let i = 1;
 			links = [];
@@ -130,7 +123,7 @@ liberator.plugins.exLinkPad = (function(){
 			}
 			for(let [url,] in linkpad){
 				i = i - 1;
-				let title = ZeroFormat(i,2) + ':' + linkpad.get(url);
+				let title = liberator.plugins.exMath.formatWithZero(i, 2) + ':' + linkpad.get(url);
 				if(filter.length < 2){
 					if((title.toLowerCase().indexOf(filter[0]) != -1) || (url.toLowerCase().indexOf(filter[0]) != -1))
 						links.push([title, url]);
