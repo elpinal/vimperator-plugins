@@ -29,7 +29,7 @@
                 }
         }
 
-        let modes = [modes.INSERT, modes.COMMAND_LINE, modes.SEARCH_FORWARD, modes.SEARCH_BACKWARD];
+        let m = [modes.INSERT, modes.COMMAND_LINE, modes.SEARCH_FORWARD, modes.SEARCH_BACKWARD];
 
         // :map, :noremap => NORMAL + VISUAL modes
         function isMultiMode(map, cmd) {
@@ -65,10 +65,10 @@
         }
 
         const opts = {
-                completer: function (context, args) completion.userMapping(context, args, modes),
+                completer: function (context, args) completion.userMapping(context, args, m),
                 options: [
                         [["<silent>", "<Silent>"],  commands.OPTION_NOARG],
-                        [["-urls", "-u"],  commands.OPTION_STRING, regexpValidator, urlsCompleter(modes, true)],
+                        [["-urls", "-u"],  commands.OPTION_STRING, regexpValidator, urlsCompleter(m, true)],
                 ],
                 literal: 1,
                 serial: function () {
@@ -89,7 +89,7 @@
                                 arguments: [map.names[0]],
                                 literalArg: map.rhs
                         }
-                        for (map in mappings._mappingsIterator(modes, mappings._user))
+                        for (map in mappings._mappingsIterator(m, mappings._user))
                                 if (map.rhs && map.noremap == noremap && !isMultiMode(map, this.name))
                         ];
                 }
@@ -97,7 +97,7 @@
 
         commands.addUserCommand(["lnoremap"],
                                 "Map a key sequence without remapping keys in lang-arg mode",
-                                function (args) { map(args, modes, true); },
+                                function (args) { map(args, m, true); },
                                 opts);
 })();
 
