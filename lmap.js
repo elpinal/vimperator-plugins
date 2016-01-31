@@ -99,5 +99,10 @@
                                 "Map a key sequence without remapping keys in lang-arg mode",
                                 function (args) { map(args, m, true); },
                                 opts);
+
+        commands.addUserCommand(["lmapc[lear]"],
+                                "Remove all mappings in lang-arg mode",
+                                function () { m.forEach(function (mode) { mappings.removeAll(mode); }); },
+                                { argCount: "0" });
 })();
 
