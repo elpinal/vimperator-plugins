@@ -95,7 +95,7 @@
                 }
         };
 
-        commands.addUserCommand(["lnoremap"],
+        commands.addUserCommand(["lno[remap]"],
                                 "Map a key sequence without remapping keys in lang-arg mode",
                                 function (args) { map(args, m, true); },
                                 opts);
