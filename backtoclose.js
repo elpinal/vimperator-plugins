@@ -1,9 +1,3 @@
-/* 
- * @name            backtoclose.js
- * @author          lukana
- * @version         0.1.0
- */
-
 liberator.plugins.exBacktoclose = (function() {
   commands.addUserCommand(['backtoclose'], 'Back to close', function(args) {
     if (window.getWebNavigation) {
