@@ -19,16 +19,7 @@ liberator.plugins.exBacktoclose = (function () {
 				{
 					argCount: "?",
 					count: true,
-					literal: 0,
-					completer: function completer(context) {
-						let sh = history.session;
-
-						context.anchored = false;
-						context.compare = CompletionContext.Sort.unsorted;
-						context.filters = [CompletionContext.Filter.textDescription];
-						context.completions = sh.slice(0, sh.index).reverse();
-						context.keys = { text: function (item) (sh.index - item.index) + ": " + item.URI.spec, description: "title", icon: "icon" };
-					}
+					literal: 0
 				});
 
 	mappings.add([modes.NORMAL], ["<C-q>", "<BS>"],
