@@ -4,6 +4,7 @@
     privateData: true
   });
   var links = [];
+
   //view links list and open link
   commands.addUserCommand(['leadmarks'], ' leadmarks ', function(args) {
     let num = args.literalArg.match(/^\d+/);
@@ -24,8 +25,8 @@
     bang: true,
     count: true,
     literal: 0
-  }
-  );
+  });
+
   // add link of current tab
   commands.addUserCommand(['addleadmark'], ' addleadmark ', function() {
     add(buffer.URL, buffer.title);
@@ -34,6 +35,7 @@
     }
   }
   );
+
   // delete link
   commands.addUserCommand(['delleadmark'], ' delleadmark ', function(args) {
     let num = args.literalArg.match(/^\d+/);
@@ -54,8 +56,7 @@
     bang: true,
     count: true,
     literal: 0
-  }
-  );
+  });
 
   function leftpad(str, len, ch) {
     str = String(str);
