@@ -15,8 +15,10 @@
   }, {
     // TODO: Update completer
     completer: function(context) {
-      completion.buffer(context)[0]
-    }
+      completion.buffer(context)
+    },
+    literal: false,
+    argCount: "*"
   });
 
   function exnum(numbers) {
