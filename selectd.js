@@ -20,7 +20,7 @@
     }
   });
 
-  function indexize(numbers) {
+  function exnum(numbers) {
     let set = new Set();
     for (let n of numbers) {
       if (typeof (n) != 'number') {
@@ -41,7 +41,7 @@
     return set;
   }
 
-  function exnum(ar) {
+  function indexize(ar) {
     let out = new Array();
     for (let i = 0; i < ar.length; i++) {
       var a = i + 1;
