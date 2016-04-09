@@ -110,7 +110,8 @@
     filter = filter.split(" ");
     context.title = ["Lead Mark", "URL"];
     let i = 1;
-    links = [];
+    // Initialize
+    var links = [];
     for (let [url, ] in leadmarks) {
       i++ ;
     }
