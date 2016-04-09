@@ -1,16 +1,4 @@
-liberator.plugins.exMath = (function() {
-  return {
-    formatWithZero: function formatWithZero(num, n) {
-      var ret = String(num);
-      while (ret.length < n) {
-        ret = "0" + ret;
-      }
-      return (ret);
-    }
-  };
-})();
-
-liberator.plugins.exLeadMarks = (function() {
+(function() {
   var leadmarks = storage.newMap("leadmarks", {
     store: true,
     privateData: true
@@ -39,14 +27,12 @@ liberator.plugins.exLeadMarks = (function() {
         liberator.echoerr("Error!:no leadmarks matching string: \"" + args + "\"");
         return;
       }
-      liberator.plugins.exLeadMarks.open(links[b][1], liberator.NEW_TAB);
+      open(links[b][1], liberator.NEW_TAB);
     } else {
       liberator.echoerr("Error!:not set");
     }
   }, {
-    completer: function(context) {
-      liberator.plugins.exLeadMarks.list(context)
-    },
+    completer: list,
     argCount: "?",
     bang: true,
     count: true,
@@ -55,7 +41,7 @@ liberator.plugins.exLeadMarks = (function() {
   );
   // add link of current tab
   commands.addUserCommand(['addleadmark'], ' addleadmark ', function() {
-    liberator.plugins.exLeadMarks.add(buffer.URL, buffer.title);
+    add(buffer.URL, buffer.title);
     if (!bookmarks.add(false, buffer.title, buffer.URL, null, [], "", false)) {
       liberator.echoerr("Could not add bookmark: " + buffer.title)
     }
@@ -83,14 +69,12 @@ liberator.plugins.exLeadMarks = (function() {
         liberator.echoerr("Error!:no leadmarks matching string: \"" + args + "\"");
         return;
       }
-      liberator.plugins.exLeadMarks.del(links[b][1]);
+      del(links[b][1]);
     } else {
       liberator.echoerr("Error!:not set");
     }
   }, {
-    completer: function(context) {
-      liberator.plugins.exLeadMarks.list(context)
-    },
+    completer: list,
     argCount: "?",
     bang: true,
     count: true,
@@ -98,23 +82,30 @@ liberator.plugins.exLeadMarks = (function() {
   }
   );
 
-  return {
-    add: function add(url, name) {
+    function formatWithZero(num, n) {
+      var ret = String(num);
+      while (ret.length < n) {
+        ret = "0" + ret;
+      }
+      return (ret);
+    }
+
+    function add(url, name) {
       leadmarks.set(url, name);
       liberator.echomsg("Added Lead Mark '" + name + "': " + url);
-    },
-    del: function del(url) {
+    }
+    function del(url) {
       leadmarks.remove(url);
       liberator.echomsg("Deleted Lead Mark : " + url);
-    },
-    open: function open(url, where) {
+    }
+    function open(url, where) {
       if (url) {
         liberator.open(url, where);
       } else {
         liberator.echoerr("Error!:not set");
       }
-    },
-    list: function list(context) {
+    }
+    function list(context) {
       var filter;
       filter = context.filter.toLowerCase();
       filter = filter.split(" ");
@@ -126,7 +117,7 @@ liberator.plugins.exLeadMarks = (function() {
       }
       for (let [url, ] in leadmarks) {
         i = i - 1;
-        let title = liberator.plugins.exMath.formatWithZero(i, 3) + ':' + leadmarks.get(url);
+        let title = formatWithZero(i, 3) + ':' + leadmarks.get(url);
         if (filter.length < 2) {
           if ((title.toLowerCase().indexOf(filter[0]) != -1) || (url.toLowerCase().indexOf(filter[0]) != -1)) {
             links.push([title, url]);
@@ -145,5 +136,4 @@ liberator.plugins.exLeadMarks = (function() {
       }
       return [0, links];
     }
-  };
 })();
