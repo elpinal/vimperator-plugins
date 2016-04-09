@@ -4,7 +4,6 @@
     privateData: true
   });
   var links = [];
-  links = [];
   //view links list and open link
   commands.addUserCommand(['leadmarks'], ' leadmarks ', function(args) {
     if (args != "") {
