@@ -2,8 +2,7 @@
   commands.addUserCommand(['selectd', 'sd'], 'Close selected tabs', function(args) {
     if (args != "") {
       let vTabs = config.tabbrowser.visibleTabs;
-      let setList = exnum(args);
-      let arrayList = [...setList];
+      let arrayList = exnum(args);
       let filteredList = arrayList.filter(e => (0 < e && e <= vTabs.length));
       let sortedList = filteredList.sort((a, b) => a < b);
 
@@ -38,7 +37,7 @@
       }
       set.add(n);
     }
-    return set;
+    return [...set];
   }
 
   function indexize(ar) {
