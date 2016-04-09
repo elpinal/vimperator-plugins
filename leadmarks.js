@@ -103,7 +103,7 @@
     context.title = ["Lead Mark", "URL"];
     let i = 1;
     // Initialize
-    var links = [];
+    links = [];
     for (let [url, ] in leadmarks) {
       i++ ;
     }
