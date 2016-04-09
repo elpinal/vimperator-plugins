@@ -6,7 +6,6 @@
   var links = [];
   //view links list and open link
   commands.addUserCommand(['leadmarks'], ' leadmarks ', function(args) {
-    if (args != "") {
       let num = args.literalArg.match(/^\d+/);
       if (num == null) {
         liberator.echoerr("Error!:should be number");
@@ -19,12 +18,9 @@
         }
       }
       liberator.echoerr("Error!:no leadmarks matching string: \"" + args + "\"");
-    } else {
-      liberator.echoerr("Error!:not set");
-    }
   }, {
     completer: list,
-    argCount: "?",
+    argCount: "1",
     bang: true,
     count: true,
     literal: 0
@@ -40,7 +36,6 @@
   );
   // delete link
   commands.addUserCommand(['delleadmark'], ' delleadmark ', function(args) {
-    if (args != "") {
       var b;
       let num = args.literalArg.match(/^\d+/);
       if (num == null) {
@@ -57,12 +52,9 @@
         return;
       }
       del(links[b][1]);
-    } else {
-      liberator.echoerr("Error!:not set");
-    }
   }, {
     completer: list,
-    argCount: "?",
+    argCount: "1",
     bang: true,
     count: true,
     literal: 0
