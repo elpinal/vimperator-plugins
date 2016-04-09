@@ -77,17 +77,19 @@
     filter = context.filter.toLowerCase();
     filter = filter.split(" ");
     context.title = ["Lead Mark", "URL"];
-    let i = 1;
+
     // Initialize
     links = [];
-    for (let [url, ] in leadmarks) {
-      i++ ;
+
+    let n = 1;
+    for (let in leadmarks) {
+      n++;
     }
 
     outer:
     for (let [url, ] in leadmarks) {
-      i = i - 1;
-      let title = leftpad(i, 3, "0") + ':' + leadmarks.get(url);
+      n--;
+      let title = leftpad(n, 3, "0") + ':' + leadmarks.get(url);
       for (let i = 0; i < filter.length; i++) {
         if ((title.toLowerCase().indexOf(filter[i]) == -1) && (url.toLowerCase().indexOf(filter[i]) == -1)) {
           continue outer;
