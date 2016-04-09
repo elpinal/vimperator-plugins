@@ -36,22 +36,18 @@
   );
   // delete link
   commands.addUserCommand(['delleadmark'], ' delleadmark ', function(args) {
-    var b;
     let num = args.literalArg.match(/^\d+/);
     if (num == null) {
-      liberator.echoerr("Error!:should number");
+      liberator.echoerr("Error!:should be number");
       return;
     }
     for (let i = 0; i < links.length; i++) {
       if (links[i][0].indexOf(num + ":") != -1) {
-        b = i;
+        del(links[i][1]);
+        return;
       }
     }
-    if (b == null) {
-      liberator.echoerr("Error!:no leadmarks matching string: \"" + args + "\"");
-      return;
-    }
-    del(links[b][1]);
+    liberator.echoerr("Error!:no leadmarks matching string: \"" + args + "\"");
   }, {
     completer: list,
     argCount: "1",
