@@ -7,17 +7,13 @@
   //view links list and open link
   commands.addUserCommand(['leadmarks'], ' leadmarks ', function(args) {
     if (args != "") {
-      var a;
       var b;
-      var y;
-      let arg = args.literalArg;
-      let num = arg.match(/^\d+/);
+      let num = args.literalArg.match(/^\d+/);
       if (num == null) {
         liberator.echoerr("Error!:should be number");
         return;
       }
-      y = links.length;
-      for (a = 0; a < y; a++) {
+      for (let a = 0; a < links.length; a++) {
         if (links[a][0].indexOf(num + ":") != -1) {
           b = a;
         }
@@ -49,17 +45,13 @@
   // delete link
   commands.addUserCommand(['delleadmark'], ' delleadmark ', function(args) {
     if (args != "") {
-      var a;
       var b;
-      var y;
-      let arg = args.literalArg;
-      let num = arg.match(/^\d+/);
+      let num = args.literalArg.match(/^\d+/);
       if (num == null) {
         liberator.echoerr("Error!:should number");
         return;
       }
-      y = links.length;
-      for (a = 0; a < y; a++) {
+      for (let a = 0; a < links.length; a++) {
         if (links[a][0].indexOf(num + ":") != -1) {
           b = a;
         }
