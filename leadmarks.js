@@ -5,7 +5,7 @@
   });
   var links = [];
 
-  //view links list and open link
+  // View links list and open link.
   commands.addUserCommand(['leadmarks'], ' leadmarks ', function(args) {
     let num = args.string.match(/^\d+/);
     if (num == null) {
@@ -24,16 +24,15 @@
     argCount: "+"
   });
 
-  // add link of current tab
+  // Add link of current tab.
   commands.addUserCommand(['addleadmark'], ' addleadmark ', function() {
     add(buffer.URL, buffer.title);
     if (!bookmarks.add(false, buffer.title, buffer.URL, null, [], "", false)) {
       liberator.echoerr("Could not add bookmark: " + buffer.title)
     }
-  }
-  );
+  });
 
-  // delete link
+  // Delete link.
   commands.addUserCommand(['delleadmark'], ' delleadmark ', function(args) {
     let num = args.string.match(/^\d+/);
     if (num == null) {
