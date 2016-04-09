@@ -13,9 +13,9 @@
         liberator.echoerr("Error!:should be number");
         return;
       }
-      for (let a = 0; a < links.length; a++) {
-        if (links[a][0].indexOf(num + ":") != -1) {
-          b = a;
+      for (let i = 0; i < links.length; i++) {
+        if (links[i][0].indexOf(num + ":") != -1) {
+          b = i;
         }
       }
       if (b == null) {
@@ -51,9 +51,9 @@
         liberator.echoerr("Error!:should number");
         return;
       }
-      for (let a = 0; a < links.length; a++) {
-        if (links[a][0].indexOf(num + ":") != -1) {
-          b = a;
+      for (let i = 0; i < links.length; i++) {
+        if (links[i][0].indexOf(num + ":") != -1) {
+          b = i;
         }
       }
       if (b == null) {
