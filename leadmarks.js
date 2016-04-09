@@ -7,7 +7,7 @@
 
   // View links list and open link.
   commands.addUserCommand(['leadmarks'], ' leadmarks ', function(args) {
-    let num = args.string.match(/^\d+/);
+    let num = args.literalArg.match(/^\d+/);
     if (num == null) {
       liberator.echoerr("Start with numbers");
       return;
@@ -21,7 +21,8 @@
     liberator.echoerr("No leadmarks matching string: " + args.string);
   }, {
     completer: list,
-    argCount: "+"
+    argCount: "+",
+    literal: false
   });
 
   // Add link of current tab.
@@ -34,7 +35,7 @@
 
   // Delete link.
   commands.addUserCommand(['delleadmark'], ' delleadmark ', function(args) {
-    let num = args.string.match(/^\d+/);
+    let num = args.literalArg.match(/^\d+/);
     if (num == null) {
       liberator.echoerr("Start with numbers");
       return;
@@ -48,7 +49,8 @@
     liberator.echoerr("No leadmarks matching string: " + args.string);
   }, {
     completer: list,
-    argCount: "+"
+    argCount: "+",
+    literal: false
   });
 
   function leftpad(str, len, ch) {
