@@ -88,18 +88,12 @@
     for (let [url, ] in leadmarks) {
       i = i - 1;
       let title = leftpad(i, 3, "0") + ':' + leadmarks.get(url);
-      if (filter.length < 2) {
-        if ((title.toLowerCase().indexOf(filter[0]) != -1) || (url.toLowerCase().indexOf(filter[0]) != -1)) {
-          links.push([title, url]);
+      for (let i = 0; i < filter.length; i++) {
+        if ((title.toLowerCase().indexOf(filter[i]) == -1) && (url.toLowerCase().indexOf(filter[i]) == -1)) {
+          continue outer;
         }
-      } else {
-        for (let i = 0; i < filter.length; i++) {
-          if ((title.toLowerCase().indexOf(filter[i]) == -1) && (url.toLowerCase().indexOf(filter[i]) == -1)) {
-            continue outer;
-          }
-        }
-        links.push([title, url]);
       }
+      links.push([title, url]);
     }
     return [0, links];
   }
