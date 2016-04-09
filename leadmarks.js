@@ -83,6 +83,8 @@
     for (let [url, ] in leadmarks) {
       i++ ;
     }
+
+    outer:
     for (let [url, ] in leadmarks) {
       i = i - 1;
       let title = leftpad(i, 3, "0") + ':' + leadmarks.get(url);
@@ -91,15 +93,12 @@
           links.push([title, url]);
         }
       } else {
-        var kh = "match"
-        for (kk = 0; kk < filter.length; kk++) {
-          if ((title.toLowerCase().indexOf(filter[kk]) == -1) && (url.toLowerCase().indexOf(filter[kk]) == -1)) {
-            var kh = "notmatch";
+        for (let i = 0; i < filter.length; i++) {
+          if ((title.toLowerCase().indexOf(filter[i]) == -1) && (url.toLowerCase().indexOf(filter[i]) == -1)) {
+            continue outer;
           }
         }
-        if (kh != "notmatch") {
-          links.push([title, url]);
-        }
+        links.push([title, url]);
       }
     }
     return [0, links];
