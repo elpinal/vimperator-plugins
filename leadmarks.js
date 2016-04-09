@@ -82,12 +82,12 @@
   }
   );
 
-  function formatWithZero(num, n) {
-    var ret = String(num);
-    while (ret.length < n) {
-      ret = "0" + ret;
+  function leftpad(str, len, ch) {
+    str = String(str);
+    if (!ch && ch !== 0) {
+      ch = ' ';
     }
-    return (ret);
+    return String(ch).repeat(len - str.length) + str;
   }
 
   function add(url, name) {
@@ -117,7 +117,7 @@
     }
     for (let [url, ] in leadmarks) {
       i = i - 1;
-      let title = formatWithZero(i, 3) + ':' + leadmarks.get(url);
+      let title = leftpad(i, 3, "0") + ':' + leadmarks.get(url);
       if (filter.length < 2) {
         if ((title.toLowerCase().indexOf(filter[0]) != -1) || (url.toLowerCase().indexOf(filter[0]) != -1)) {
           links.push([title, url]);
