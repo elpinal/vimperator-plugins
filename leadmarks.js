@@ -80,7 +80,7 @@
     links = [];
 
     let n = 1;
-    for (let in leadmarks) {
+    for (let [] in leadmarks) {
       n++;
     }
 
