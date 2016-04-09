@@ -82,58 +82,58 @@
   }
   );
 
-    function formatWithZero(num, n) {
-      var ret = String(num);
-      while (ret.length < n) {
-        ret = "0" + ret;
-      }
-      return (ret);
+  function formatWithZero(num, n) {
+    var ret = String(num);
+    while (ret.length < n) {
+      ret = "0" + ret;
     }
+    return (ret);
+  }
 
-    function add(url, name) {
-      leadmarks.set(url, name);
-      liberator.echomsg("Added Lead Mark '" + name + "': " + url);
+  function add(url, name) {
+    leadmarks.set(url, name);
+    liberator.echomsg("Added Lead Mark '" + name + "': " + url);
+  }
+  function del(url) {
+    leadmarks.remove(url);
+    liberator.echomsg("Deleted Lead Mark : " + url);
+  }
+  function open(url, where) {
+    if (url) {
+      liberator.open(url, where);
+    } else {
+      liberator.echoerr("Error!:not set");
     }
-    function del(url) {
-      leadmarks.remove(url);
-      liberator.echomsg("Deleted Lead Mark : " + url);
+  }
+  function list(context) {
+    var filter;
+    filter = context.filter.toLowerCase();
+    filter = filter.split(" ");
+    context.title = ["Lead Mark", "URL"];
+    let i = 1;
+    links = [];
+    for (let [url, ] in leadmarks) {
+      i++ ;
     }
-    function open(url, where) {
-      if (url) {
-        liberator.open(url, where);
+    for (let [url, ] in leadmarks) {
+      i = i - 1;
+      let title = formatWithZero(i, 3) + ':' + leadmarks.get(url);
+      if (filter.length < 2) {
+        if ((title.toLowerCase().indexOf(filter[0]) != -1) || (url.toLowerCase().indexOf(filter[0]) != -1)) {
+          links.push([title, url]);
+        }
       } else {
-        liberator.echoerr("Error!:not set");
-      }
-    }
-    function list(context) {
-      var filter;
-      filter = context.filter.toLowerCase();
-      filter = filter.split(" ");
-      context.title = ["Lead Mark", "URL"];
-      let i = 1;
-      links = [];
-      for (let [url, ] in leadmarks) {
-        i++ ;
-      }
-      for (let [url, ] in leadmarks) {
-        i = i - 1;
-        let title = formatWithZero(i, 3) + ':' + leadmarks.get(url);
-        if (filter.length < 2) {
-          if ((title.toLowerCase().indexOf(filter[0]) != -1) || (url.toLowerCase().indexOf(filter[0]) != -1)) {
-            links.push([title, url]);
-          }
-        } else {
-          var kh = "match"
-          for (kk = 0; kk < filter.length; kk++) {
-            if ((title.toLowerCase().indexOf(filter[kk]) == -1) && (url.toLowerCase().indexOf(filter[kk]) == -1)) {
-              var kh = "notmatch";
-            }
-          }
-          if (kh != "notmatch") {
-            links.push([title, url]);
+        var kh = "match"
+        for (kk = 0; kk < filter.length; kk++) {
+          if ((title.toLowerCase().indexOf(filter[kk]) == -1) && (url.toLowerCase().indexOf(filter[kk]) == -1)) {
+            var kh = "notmatch";
           }
         }
+        if (kh != "notmatch") {
+          links.push([title, url]);
+        }
       }
-      return [0, links];
     }
+    return [0, links];
+  }
 })();
