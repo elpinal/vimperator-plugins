@@ -13,12 +13,11 @@
       liberator.echomsg("Closed Current Tab");
     }
   }, {
-    // TODO: Update completer
+    argCount: "*",
     completer: function(context) {
       completion.buffer(context)
     },
-    literal: false,
-    argCount: "*"
+    literal: false
   });
 
   function exnum(numbers) {
