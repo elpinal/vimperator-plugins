@@ -21,10 +21,7 @@
     liberator.echoerr("Error!:no leadmarks matching string: \"" + args + "\"");
   }, {
     completer: list,
-    argCount: "1",
-    bang: true,
-    count: true,
-    literal: false
+    argCount: "+"
   });
 
   // add link of current tab
@@ -52,10 +49,7 @@
     liberator.echoerr("Error!:no leadmarks matching string: \"" + args + "\"");
   }, {
     completer: list,
-    argCount: "1",
-    bang: true,
-    count: true,
-    literal: false
+    argCount: "+"
   });
 
   function leftpad(str, len, ch) {
