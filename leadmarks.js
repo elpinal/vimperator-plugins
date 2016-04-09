@@ -9,7 +9,7 @@
   commands.addUserCommand(['leadmarks'], ' leadmarks ', function(args) {
     let num = args.literalArg.match(/^\d+/);
     if (num == null) {
-      liberator.echoerr("Error!:should be number");
+      liberator.echoerr("Start with numbers");
       return;
     }
     for (let i = 0; i < links.length; i++) {
@@ -18,7 +18,7 @@
         return;
       }
     }
-    liberator.echoerr("Error!:no leadmarks matching string: \"" + args + "\"");
+    liberator.echoerr("No leadmarks matching string: " + args.string);
   }, {
     completer: list,
     argCount: "+"
@@ -37,7 +37,7 @@
   commands.addUserCommand(['delleadmark'], ' delleadmark ', function(args) {
     let num = args.literalArg.match(/^\d+/);
     if (num == null) {
-      liberator.echoerr("Error!:should be number");
+      liberator.echoerr("Start with numbers");
       return;
     }
     for (let i = 0; i < links.length; i++) {
@@ -46,7 +46,7 @@
         return;
       }
     }
-    liberator.echoerr("Error!:no leadmarks matching string: \"" + args + "\"");
+    liberator.echoerr("No leadmarks matching string: " + args.string);
   }, {
     completer: list,
     argCount: "+"
@@ -66,14 +66,10 @@
   }
   function del(url) {
     leadmarks.remove(url);
-    liberator.echomsg("Deleted Lead Mark : " + url);
+    liberator.echomsg("Deleted Lead Mark: " + url);
   }
   function open(url, where) {
-    if (url) {
-      liberator.open(url, where);
-    } else {
-      liberator.echoerr("Error!:not set");
-    }
+    liberator.open(url, where);
   }
   function list(context) {
     var filter;
