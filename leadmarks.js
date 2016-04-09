@@ -24,7 +24,7 @@
     argCount: "1",
     bang: true,
     count: true,
-    literal: 0
+    literal: false
   });
 
   // add link of current tab
@@ -55,7 +55,7 @@
     argCount: "1",
     bang: true,
     count: true,
-    literal: 0
+    literal: false
   });
 
   function leftpad(str, len, ch) {
