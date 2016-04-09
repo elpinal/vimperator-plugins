@@ -52,15 +52,7 @@
         concat = true;
       }
       if (concat) {
-        // Convert [3, 4, 5, 10, 11] to [3-5, 10, 11], not [3-5, 10-11].
-        /*
-          if (parseInt(ar[i]) + 1 == current) {
-            out.push(ar[i]);
-            out.push(ar[i + 1]);
-          } else {
-        */
         out.push(ar[i] + "-" + current);
-        //}
       } else {
         out.push(ar[i]);
       }
