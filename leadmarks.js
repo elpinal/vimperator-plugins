@@ -7,7 +7,6 @@
   //view links list and open link
   commands.addUserCommand(['leadmarks'], ' leadmarks ', function(args) {
     if (args != "") {
-      var b;
       let num = args.literalArg.match(/^\d+/);
       if (num == null) {
         liberator.echoerr("Error!:should be number");
@@ -15,15 +14,11 @@
       }
       for (let i = 0; i < links.length; i++) {
         if (links[i][0].indexOf(num + ":") != -1) {
-          b = i;
-          break;
+          open(links[i][1], liberator.NEW_TAB);
+          return;
         }
       }
-      if (b == null) {
-        liberator.echoerr("Error!:no leadmarks matching string: \"" + args + "\"");
-        return;
-      }
-      open(links[b][1], liberator.NEW_TAB);
+      liberator.echoerr("Error!:no leadmarks matching string: \"" + args + "\"");
     } else {
       liberator.echoerr("Error!:not set");
     }
