@@ -73,9 +73,7 @@
     liberator.open(url, where);
   }
   function list(context) {
-    var filter;
-    filter = context.filter.toLowerCase();
-    filter = filter.split(" ");
+    let filter = context.filter.toLowerCase().split(" ");
     context.title = ["Lead Mark", "URL"];
 
     // Initialize
