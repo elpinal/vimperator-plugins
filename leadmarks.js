@@ -16,6 +16,7 @@
       for (let i = 0; i < links.length; i++) {
         if (links[i][0].indexOf(num + ":") != -1) {
           b = i;
+          break;
         }
       }
       if (b == null) {
