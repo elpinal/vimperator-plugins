@@ -7,12 +7,12 @@
 
   //view links list and open link
   commands.addUserCommand(['leadmarks'], ' leadmarks ', function(args) {
-    let num = args.literalArg.match(/^\d+/);
+    let num = args.string.match(/^\d+/);
     if (num == null) {
       liberator.echoerr("Start with numbers");
       return;
     }
-    for (let i = 0; i < links.length; i++) {
+    for (let i = links.length - 1; i >= 0; i--) {
       if (links[i][0].indexOf(num + ":") != -1) {
         open(links[i][1], liberator.NEW_TAB);
         return;
@@ -35,12 +35,12 @@
 
   // delete link
   commands.addUserCommand(['delleadmark'], ' delleadmark ', function(args) {
-    let num = args.literalArg.match(/^\d+/);
+    let num = args.string.match(/^\d+/);
     if (num == null) {
       liberator.echoerr("Start with numbers");
       return;
     }
-    for (let i = 0; i < links.length; i++) {
+    for (let i = links.length - 1; i >= 0; i--) {
       if (links[i][0].indexOf(num + ":") != -1) {
         del(links[i][1]);
         return;
