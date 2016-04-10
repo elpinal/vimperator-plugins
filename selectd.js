@@ -2,7 +2,7 @@
   commands.addUserCommand(['selectd', 'sd'], 'Close selected tabs', function(args) {
     if (args != "") {
       let vTabs = config.tabbrowser.visibleTabs;
-      let arrayList = exnum(args.literalArg);
+      let arrayList = exnum(args.literalArg.split(" "));
       let filteredList = arrayList.filter(e => (0 < e && e <= vTabs.length));
       let sortedList = filteredList.sort((a, b) => a < b);
 
