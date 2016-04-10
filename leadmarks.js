@@ -28,9 +28,6 @@
   // Add link of current tab.
   commands.addUserCommand(["addleadmark"], "Add a leadmark", function() {
     add(buffer.URL, buffer.title);
-    if (!bookmarks.add(false, buffer.title, buffer.URL, null, [], "", false)) {
-      liberator.echoerr("Could not add bookmark: " + buffer.title)
-    }
   });
 
   // Delete link.
