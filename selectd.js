@@ -14,6 +14,7 @@
     }
   }, {
     argCount: "*",
+    // TODO: Better completion
     completer: function(context) {
       completion.buffer(context)
     },
