@@ -6,7 +6,7 @@
   var links = [];
 
   // View links list and open link.
-  commands.addUserCommand(['leadmarks'], ' leadmarks ', function(args) {
+  commands.addUserCommand(["leadmarks"], "List or open leadmarks", function(args) {
     let num = args.literalArg.match(/^\d+/);
     if (num == null) {
       liberator.echoerr("Start with numbers");
@@ -26,7 +26,7 @@
   });
 
   // Add link of current tab.
-  commands.addUserCommand(['addleadmark'], ' addleadmark ', function() {
+  commands.addUserCommand(["addleadmark"], "Add a leadmark", function() {
     add(buffer.URL, buffer.title);
     if (!bookmarks.add(false, buffer.title, buffer.URL, null, [], "", false)) {
       liberator.echoerr("Could not add bookmark: " + buffer.title)
@@ -34,7 +34,7 @@
   });
 
   // Delete link.
-  commands.addUserCommand(['delleadmark'], ' delleadmark ', function(args) {
+  commands.addUserCommand(["delleadmark"], "Delete a leadmark", function(args) {
     let num = args.literalArg.match(/^\d+/);
     if (num == null) {
       liberator.echoerr("Start with numbers");
